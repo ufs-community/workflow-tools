@@ -29,5 +29,5 @@ jobs:
 
     - name: Run pytest
       run: |
-        cd $GITHUB_WORKSPACE/uwtools
-        pytest -v
+        cd $GITHUB_WORKSPACE/uwtools/src/tests
+        python -m pytest -v
