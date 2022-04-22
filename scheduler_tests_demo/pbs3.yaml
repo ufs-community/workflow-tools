@@ -1,0 +1,17 @@
+scheduler: 'PBS'
+submit_cmd: 'qsub'
+shell: '#!/bin/bash'
+account: 'GFS-DEV'
+queue: 'dev'
+jobname: 'test2'
+join: False
+stdout: 'test2.out'
+stderr: 'test2.err'
+walltime': '00:01:00'
+nodes': 1
+tasks_per_node: 2
+threads: 2
+memory: '256M'
+debug: False
+exclusive: False
+

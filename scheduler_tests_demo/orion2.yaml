@@ -1,0 +1,14 @@
+scheduler: 'Slurm'
+submit_cmd: 'sbatch'
+account: 'da-cpu'
+queue: 'debug'
+partition: 'debug'
+jobname: 'test2'
+join: True
+stdout: 'test2.out'
+stderr: 'test2.err'
+walltime': '00:01:00'
+nodes': 1
+tasks_per_node: 1
+debug: False
+exclusive: True
