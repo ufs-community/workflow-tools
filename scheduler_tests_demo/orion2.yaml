@@ -7,8 +7,8 @@ jobname: 'test2'
 join: True
 stdout: 'test2.out'
 stderr: 'test2.err'
-walltime': '00:01:00'
-nodes': 1
+walltime: '00:01:00'
+nodes: 1
 tasks_per_node: 1
 debug: False
 exclusive: True

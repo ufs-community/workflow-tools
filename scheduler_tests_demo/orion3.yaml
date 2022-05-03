@@ -4,8 +4,8 @@ account: 'da-cpu'
 queue: 'batch'
 jobname: 'test3'
 stdout: 'test3.out'
-walltime': '00:01:00'
-nodes': 1
+walltime: '00:01:00'
+nodes: 1
 tasks_per_node: 2
 memory: '256M'
 debug: True
