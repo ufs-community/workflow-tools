@@ -1,0 +1,6 @@
+{
+  "tests/test_loaders.py": true,
+  "tests/test_logger.py": true,
+  "tests/test_scheduler.py": true,
+  "tests/utils/test_memory.py": true
+}
