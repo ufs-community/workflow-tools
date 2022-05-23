@@ -1,124 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Coverage report</title>
-    <link rel="icon" sizes="32x32" href="favicon_32.png">
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <script type="text/javascript" src="coverage_html.js" defer></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>UW Tools Project</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
 </head>
-<body class="indexfile">
-<header>
-    <div class="content">
-        <h1>Coverage report:
-            <span class="pc_cov">92%</span>
-        </h1>
-        <div id="help_panel_wrapper">
-            <input id="help_panel_state" type="checkbox">
-            <label for="help_panel_state">
-                <img id="keyboard_icon" src="keybd_closed.png" alt="Show/hide keyboard shortcuts" />
-            </label>
-            <div id="help_panel">
-                <p class="legend">Shortcuts on this page</p>
-                <div>
-                    <p class="keyhelp">
-                        <kbd>n</kbd>
-                        <kbd>s</kbd>
-                        <kbd>m</kbd>
-                        <kbd>x</kbd>
-                        <kbd>c</kbd> &nbsp; change column sorting
-                    </p>
+
+<body>
+    <!-- Background Video-->
+    <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="assets/mp4/bg.mp4" type="video/mp4" />
+    </video>
+    <!-- Masthead-->
+    <div class="masthead">
+        <div class="masthead-content text-white">
+            <div class="container-fluid px-4 px-lg-0">
+                <h1 class="lh-1 mb-4">UNIFIED WORKFLOW TOOLS</h1>
+                <div class="repo-card">
+                    <a href="https://github.com/ufs-community/workflow-tools"><img
+                            src="https://gh-card.dev/repos/ufs-community/workflow-tools.svg" width="100%"></a>
                 </div>
             </div>
         </div>
-        <form id="filter_container">
-            <input id="filter" type="text" value="" placeholder="filter..." />
-        </form>
     </div>
-</header>
-<main id="index">
-    <table class="index" data-sortable>
-        <thead>
-            <tr class="tablehead" title="Click to sort">
-                <th class="name left" aria-sort="none" data-shortcut="n">Module</th>
-                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="s">statements</th>
-                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="m">missing</th>
-                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="x">excluded</th>
-                <th class="right" aria-sort="none" data-shortcut="c">coverage</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="file">
-                <td class="name left"><a href="d_8f989c85c5cd833d___init___py.html">src/uwtools/__init__.py</a></td>
-                <td>4</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="4 4">100%</td>
-            </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_8f989c85c5cd833d_exceptions_py.html">src/uwtools/exceptions.py</a></td>
-                <td>10</td>
-                <td>10</td>
-                <td>0</td>
-                <td class="right" data-ratio="0 10">0%</td>
-            </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_8f989c85c5cd833d_loaders_py.html">src/uwtools/loaders.py</a></td>
-                <td>15</td>
-                <td>2</td>
-                <td>0</td>
-                <td class="right" data-ratio="13 15">87%</td>
-            </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_8f989c85c5cd833d_logger_py.html">src/uwtools/logger.py</a></td>
-                <td>67</td>
-                <td>6</td>
-                <td>0</td>
-                <td class="right" data-ratio="61 67">91%</td>
-            </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_8f989c85c5cd833d_scheduler_py.html">src/uwtools/scheduler.py</a></td>
-                <td>135</td>
-                <td>3</td>
-                <td>0</td>
-                <td class="right" data-ratio="132 135">98%</td>
-            </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_673929fde86c24bc___init___py.html">src/uwtools/utils/__init__.py</a></td>
-                <td>1</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="1 1">100%</td>
-            </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_673929fde86c24bc_memory_py.html">src/uwtools/utils/memory.py</a></td>
-                <td>23</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="23 23">100%</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr class="total">
-                <td class="name left">Total</td>
-                <td>255</td>
-                <td>21</td>
-                <td>0</td>
-                <td class="right" data-ratio="234 255">92%</td>
-            </tr>
-        </tfoot>
-    </table>
-    <p id="no_rows">
-        No items found using the specified filter.
-    </p>
-</main>
-<footer>
-    <div class="content">
-        <p>
-            <a class="nav" href="https://coverage.readthedocs.io">coverage.py v6.3.3</a>,
-            created at 2022-05-20 19:45 +0000
-        </p>
+    <div class="social-icons">
+        <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
+            <a title="code coverage report" class="btn btn-dark m-3"
+                href="https://ufs-community.github.io/workflow-tools/coverage/"><i
+                    class=" fa-solid fa-helmet-safety"></i></a>
+            <a title="jira" class="btn btn-dark m-3" href="https://jira-epic.woc.noaa.gov/secure/RapidBoard.jspa"><i
+                    class="fa-brands fa-jira"></i></a>
+            <a title="confluence" class="btn btn-dark m-3"
+                href="https://confluence-epic.woc.noaa.gov/display/UW/Unified+Workflow"><i
+                    class="fa-brands fa-confluence"></i></a>
+            <a title="documentation" class="btn btn-dark m-3"
+                href="https://unified-workflow.readthedocs.io/en/latest/Contributors_Guide/index.html"><i
+                    class="fa-solid fa-book"></i></a>
+        </div>
+        <text></text>
     </div>
-</footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
 </body>
+
 </html>
