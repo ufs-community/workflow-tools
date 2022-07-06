@@ -86,4 +86,17 @@ for k, v in yaml_dict.items():
     print(f'{k}: {v}')
 
 
-
+expected_printed_output = '''
+model: gfs
+target: ufs-weather-model
+experiment_dir: /home/myexpid
+horizontal_resolution: c768
+vertical_resolution: 64
+executable: /Users/christina.holt/Work/ufs-srweather-app/bin/ufs_weather_model
+filetype: gfs
+datapath: /home/myexpid/{{ cycle.current_cycle }}
+filename_core: fv_core.res.nc
+updated_datapath: /home/myexpid/{{ cycle.my_current_cycle }}
+updatethis: testpassed
+testupdate: testpassed
+'''
