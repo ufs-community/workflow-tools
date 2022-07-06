@@ -64,6 +64,9 @@ experiment_dir: /home/myexpid
 
 fcst:
   length: 72
+  bndy_freq: 12
+
+boundary_hours: '{% for h in range(fcst.bndy_freq, fcst.length, fcst.bndy_freq) %}{{ " %03d" % h }}{% endfor %}'
 
 horizontal_resolution: c768
 vertical_resolution: '{{ 62 + 2 }}'
@@ -101,13 +104,21 @@ for k, v in yaml_dict.items():
 
     # Save a bit of compute and only do this part for strings that
     # contain the jinja double brackets.
-    if '{{' in v:
+    is_a_template = any((ele for ele in ['{{', '{%'] if ele in v))
+    if is_a_template:
 
-        # Find each individual double curly brace template in the string
-        # We need one template at a time so that we can opt to leave
-        # some un-filled when they are not yet set. For example, we can
-        # save cycle-dependent templates to fill in at run time.
-        templates = re.findall(r'{{[^}]*}}|\S', v)
+        # Find expressions first, and process them as a single template
+        # if they exist
+        # Find individual double curly brace template in the string
+        # otherwise. We need one substitution template at a time so that
+        # we can opt to leave some un-filled when they are not yet set.
+        # For example, we can save cycle-dependent templates to fill in
+        # at run time.
+        print(f'Value: {v}')
+        if '{%' in v:
+            templates = [v]
+        else:
+            templates = re.findall(r'{{[^}]*}}|\S', v)
         print(f'Templates: {templates}')
 
         data = []
