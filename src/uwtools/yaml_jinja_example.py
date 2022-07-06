@@ -157,7 +157,8 @@ expected_printed_output = '''
 model: gfs
 target: ufs-weather-model
 experiment_dir: /home/myexpid
-fcst: {'length': 72}
+fcst: {'length': 72, 'bndy_freq': 12}
+boundary_hours:  012 024 036 048 060
 horizontal_resolution: c768
 vertical_resolution: 64
 executable: /Users/christina.holt/Work/ufs-srweather-app/bin/ufs_weather_model
