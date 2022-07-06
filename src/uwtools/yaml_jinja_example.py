@@ -62,19 +62,24 @@ target: ufs-weather-model
 
 experiment_dir: /home/myexpid
 
+fcst:
+  length: 72
+
 horizontal_resolution: c768
 vertical_resolution: '{{ 62 + 2 }}'
 
 executable: '{{ env.UFSEXEC }}'
 
+post_length: '{{ fcst.length }}'
+
 filetype: gfs
-datapath: '{{ cfg.experiment_dir }}/{{ cycle.current_cycle }}'
+datapath: '{{ experiment_dir }}/{{ cycle.current_cycle }}'
 filename_core: 'fv_core.res.nc'
 
-updated_datapath: '{{ cfg.experiment_dir }}/{{ cycle.my_current_cycle }}'
+updated_datapath: '{{ experiment_dir }}/{{ cycle.my_current_cycle }}'
 
 updatethis: 'testpassed'
-testupdate: '{{ cfg.updatethis }}'
+testupdate: '{{ updatethis }}'
 
 
 '''
@@ -111,7 +116,7 @@ for k, v in yaml_dict.items():
             try:
                 # Fill in a template that has the appropriate variables
                 # set.
-                template = j_tmpl.render(cfg=yaml_dict, env=os.environ)
+                template = j_tmpl.render(env=os.environ, **yaml_dict)
                 print(f'Filled template: {k}: {template}')
             except jinja2.exceptions.UndefinedError as e:
                 # Leave a templated field as-is in the resulting dict
@@ -141,9 +146,11 @@ expected_printed_output = '''
 model: gfs
 target: ufs-weather-model
 experiment_dir: /home/myexpid
+fcst: {'length': 72}
 horizontal_resolution: c768
 vertical_resolution: 64
 executable: /Users/christina.holt/Work/ufs-srweather-app/bin/ufs_weather_model
+post_length: 72
 filetype: gfs
 datapath: /home/myexpid/{{ cycle.current_cycle }}
 filename_core: fv_core.res.nc
