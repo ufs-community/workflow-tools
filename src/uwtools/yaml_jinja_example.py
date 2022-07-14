@@ -144,29 +144,24 @@ for k, v in yaml_dict.items():
 print('*'*80)
 print('*'*80)
 
-
-for k, v in yaml_dict.items():
-    print(f'{k}: {v}')
-
-
-with open('test_example.yaml', 'w') as fn:
-    yaml.dump(yaml_dict, fn)
-
+print(yaml.dump(yaml_dict, default_flow_style=False))
 
 expected_printed_output = '''
-model: gfs
-target: ufs-weather-model
-experiment_dir: /home/myexpid
-fcst: {'length': 72, 'bndy_freq': 12}
-boundary_hours:  012 024 036 048 060
-horizontal_resolution: c768
-vertical_resolution: 64
-executable: /Users/christina.holt/Work/ufs-srweather-app/bin/ufs_weather_model
-post_length: 72
-filetype: gfs
+boundary_hours: ' 012 024 036 048 060'
 datapath: /home/myexpid/{{ cycle.current_cycle }}
+executable: /Users/christina.holt/Work/ufs-srweather-app/bin/ufs_weather_model
+experiment_dir: /home/myexpid
+fcst:
+  bndy_freq: 12
+  length: 72
 filename_core: fv_core.res.nc
+filetype: gfs
+horizontal_resolution: c768
+model: gfs
+post_length: '72'
+target: ufs-weather-model
+testupdate: testpassed
 updated_datapath: /home/myexpid/{{ cycle.my_current_cycle }}
 updatethis: testpassed
-testupdate: testpassed
+vertical_resolution: '64'
 '''
