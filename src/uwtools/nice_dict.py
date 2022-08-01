@@ -1,11 +1,14 @@
+'''
+NiceDict is overloaded Python dictionary used for pretty printing
+and in support of YAML inline strigification
+'''
 # (C) Copyright 2020-2022 UCAR
 #
-# This software is licensed under the terms of the Apache Licence Version 2.0
+# This software is licensed under the terms of the Apache License Version 2.0
 # which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
 #
-# Part of this software is developed by the Joint Center for Satellite Data Assimilation (JCSDA) together with its partners.
-
-# pylint: disable=all
+# Part of this software is developed by the Joint Center for
+# Satellite Data Assimilation (JCSDA) together with its partners.
 
 import re
 import yaml
@@ -27,7 +30,7 @@ def traverse_structure(structure, visitor, *args, **kwargs):
             new.append(traverse_structure(item, visitor))
     else:
         new = visitor(structure, *args, **kwargs)
-    return 
+    return new
 
 class NiceDict(dict):
 
@@ -57,6 +60,7 @@ class NiceDict(dict):
                 elif isinstance(i, list):
                     key += '\n'
                     rows = []
+                    #pylint: disable=invalid-name
                     for x in i:
                         if isinstance(x, dict):
                             rows.append(self.__clean_str__(x, level+1))
@@ -74,8 +78,7 @@ class NiceDict(dict):
     def __getattr__(self, item):
         if item in self:
             return self[item]
-        else:
-            raise(AttributeError(f"'{type(self)}' object has no attribute '{item}'"))
+        raise AttributeError(f"'{type(self)}' object has no attribute '{item}'")
 
     def flatten(self):
         """
@@ -97,14 +100,15 @@ class NiceDict(dict):
         return result
 
     def save_yaml(self, path):
+        '''Save pretty printing yaml file from withing NiceDict Class'''
         def do_nothing(item):
             return item
 
         # duplicate the structure to plain objects
         # so that yaml doesn't bug us with references
         copy = traverse_structure(self, do_nothing)
-        with open(path, 'w') as f:
-            yaml.dump(copy, f, width=100000)
+        with open(path, 'w', encoding='utf-8') as _file:
+            yaml.dump(copy, _file, width=100000)
 
     @staticmethod
     def reach_attribute(where, attributes):
@@ -113,7 +117,7 @@ class NiceDict(dict):
             Throws AttributeError if any level is not found
         """
         # get rid of special case
-        if attributes is None or not len(attributes):
+        if attributes is None or not attributes:
             return where
 
         result = None
@@ -122,7 +126,7 @@ class NiceDict(dict):
         if attribute_list[0] == 'config':
             attribute_list = attribute_list[1:]
         for attribute in attribute_list:
-            index = re.findall('\[(\d*?)\]', attribute)
+            index = re.findall(r'\[(\d*?)\]', attribute)
             if len(index):
                 if len(index) > 1:
                     raise ValueError(f'unable to process multiple indexes: {attribute}')
@@ -143,7 +147,7 @@ class NiceDict(dict):
         if len(attribute_list) > 1:
             item = cls.reach_attribute(where, '.'.join(attribute_list[:-1]))
         attribute = attribute_list[-1]
-        index = re.findall('\[(\d*?)\]', attribute)
+        index = re.findall(r'\[(\d*?)\]', attribute)
         if len(index):
             if len(index) > 1:
                 raise ValueError(f'unable to process multiple indexes: {attribute}')
@@ -167,7 +171,7 @@ class NiceDict(dict):
             Returns the attributes without indexes for list:
             a.b.[0].c.[1].d -> a.b.[].c.[].d
         """
-        lists = re.findall('\[\d*?\]', attributes)
-        for v in lists:
-            attributes = attributes.replace(v, '[]')
+        lists = re.findall(r'\[\d*?\]', attributes)
+        for var in lists:
+            attributes = attributes.replace(var, '[]')
         return attributes
